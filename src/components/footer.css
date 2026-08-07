@@ -44,8 +44,9 @@
   transition: transform 0.3s ease;
 }
 
+/* Updated intrinsic height control matching header optimization to prevent deployment scaling issues */
 .footer-logo-link img {
-  height: clamp(80px, 10vw, 105px);
+  height: 48px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -213,6 +214,9 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 36px;
   }
+  .footer-logo-link img {
+    height: 44px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -236,6 +240,10 @@
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .footer-logo-link img {
+    height: 40px;
   }
 
   .footer-text {
@@ -273,7 +281,7 @@
 
   .footer-contact {
     justify-content: center;
-    text-align: left; /* Keeps multiline contact items aligned nicely */
+    text-align: left; 
     margin-left: 0;
     width: 100%;
     max-width: 320px;
