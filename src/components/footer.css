@@ -45,7 +45,7 @@
 }
 
 .footer-logo-link img {
-  height: clamp(80px, 10vw, 105px);
+  height: clamp(80px, 10vw, 85px);
   width: auto;
   display: block;
   object-fit: contain;
