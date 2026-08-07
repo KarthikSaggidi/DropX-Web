@@ -1,0 +1,251 @@
+/* =========================================================
+   HEADER & NAVIGATION CSS (header.css) - Fully Responsive
+========================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #cbd5e1;
+  z-index: 1000;
+  font-family: 'Inter', system-ui, sans-serif;
+  box-sizing: border-box;
+}
+
+.nav-shell {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Brand Logo */
+.brand {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.main-logo {
+  height: 105px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  transform: scale(1.6);
+  transform-origin: left center;
+  transition: transform 0.3s ease;
+}
+
+/* Mobile Toggle Button */
+.mobile-toggle {
+  display: none;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #0f172a;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.mobile-toggle:hover {
+  background: #e2e8f0;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 30px);
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1e293b;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 8px 0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.nav-link-btn:hover,
+.nav-link-btn.active {
+  color: #2563eb;
+}
+
+.nav-link-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.nav-link-btn svg.rotate {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu (Click Triggered) */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: fadeInDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  z-index: 100;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown a {
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1e293b;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: block;
+}
+
+.dropdown a:hover {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+/* Desktop CTA Button */
+.top-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.top-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+@media (max-width: 1024px) {
+  .main-logo {
+    transform: scale(1.4); /* Scaled down slightly to prevent overlapping menu elements */
+  }
+}
+
+@media (max-width: 992px) {
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .top-cta.desktop-cta {
+    display: none;
+  }
+
+  .main-logo {
+    transform: scale(1.25); 
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: #ffffff;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px 24px;
+    gap: 20px;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+
+  .nav-links.show {
+    transform: translateX(0);
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .nav-link-btn {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .dropdown {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: #f8fafc;
+    padding: 10px 15px;
+    margin-top: 8px;
+    border-radius: 10px;
+    width: 100%;
+    animation: none;
+    box-sizing: border-box;
+  }
+
+  .dropdown a {
+    font-size: 0.95rem;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-logo {
+    transform: scale(1.1); /* Prevents very small mobile screen width clipping */
+  }
+}

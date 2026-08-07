@@ -1,0 +1,196 @@
+/*==============================================================
+GLOBAL & LAYOUT
+==============================================================*/
+
+:root {
+    --primary-blue: #2563eb;
+    --dark-blue: #1d4ed8;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --bg-white: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.pricing-section {
+    padding: 100px 0;
+    background-color: var(--bg-white);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.pricing-section .container {
+    width: min(1200px, 94%);
+    margin: auto;
+}
+
+/*==============================================================
+SECTION HEADER
+==============================================================*/
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.pricing-header h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+}
+
+.pricing-header p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/*==============================================================
+GRID & CARDS
+==============================================================*/
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    align-items: stretch;
+}
+
+.pricing-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-white);
+    border-radius: 30px; 
+    border: 2px solid #000000;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-blue);
+    box-shadow: 0 20px 45px rgba(37, 99, 235, 0.15); 
+}
+
+/*==============================================================
+HEADER & WAVE
+==============================================================*/
+
+.pricing-banner {
+    position: relative;
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
+    color: #ffffff;
+    text-align: center;
+    padding: 35px 20px 70px; 
+}
+
+.pricing-banner h3 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin: 0 0 5px 0;
+    letter-spacing: -0.5px;
+}
+
+.pricing-banner p {
+    font-size: 0.95rem;
+    margin: 0;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.pricing-wave {
+    position: absolute;
+    bottom: -1px; 
+    left: 0;
+    width: 100%;
+    height: 60px;
+    display: block;
+}
+
+/*==============================================================
+PRICE SECTION
+==============================================================*/
+
+.pricing-price-box {
+    text-align: center;
+    padding: 15px 20px 25px;
+}
+
+.pricing-price {
+    font-size: 2.2rem; 
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.2;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+}
+
+.pricing-period {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/*==============================================================
+FEATURES LIST
+==============================================================*/
+
+.pricing-features {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 10px 30px 40px; 
+    margin-bottom: auto;
+}
+
+.feature-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.feature-row span {
+    color: var(--text-dark);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/*==============================================================
+MEDIA QUERIES
+==============================================================*/
+
+@media (max-width: 1200px) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: auto;
+    }
+    .pricing-section {
+        padding: 60px 20px;
+    }
+    .pricing-header {
+        margin-bottom: 40px;
+    }
+    .pricing-header h2 {
+        font-size: 2.2rem;
+    }
+}
