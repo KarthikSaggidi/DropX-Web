@@ -40,7 +40,7 @@
 }
 
 .main-logo {
-  height: 145px; /* Large and prominent, but safely fits inside the 90px header */
+  height: 155px; /* Large and prominent, but safely fits inside the 80px header */
   width: auto;
   display: block;
   object-fit: contain;

@@ -435,16 +435,17 @@
 .process-timeline-container {
   position: relative;
   width: 100%;
-  padding: 20px;
+  padding: 20px 40px; /* Added extra horizontal padding so circles don't overflow */
   z-index: 2;
+  box-sizing: border-box;
 }
 
 .process-line-track {
   position: absolute;
-  top: 50px;
-  left: 5%;
-  right: 5%;
-  height: 2px;
+  top: 52px; /* Aligned vertically with the center of the step circles */
+  left: 60px;  /* Indented cleanly to match inner spacing */
+  right: 60px; /* Indented cleanly to match inner spacing */
+  height: 3px;
   background-color: #cbd5e1;
   border-radius: 4px;
   z-index: 1;
@@ -571,15 +572,24 @@
 }
 
 @media (max-width: 768px) {
+  .process-timeline-container {
+    padding: 20px;
+  }
   .process-steps-row {
     flex-direction: column; 
     gap: 40px;
+    align-items: center;
   }
   .process-line-track {
-    display: none;
+    display: none; /* Hide horizontal track on mobile */
+  }
+  .process-step-item {
+    width: 100%;
+    align-items: center;
   }
   .process-step-content {
     max-width: 300px;
+    text-align: center;
   }
 }
 
