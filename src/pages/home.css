@@ -64,8 +64,6 @@
   padding: 80px 0 90px;
 }
 
-
-
 .hero-centered-container {
   position: relative;
   z-index: 10;
@@ -134,8 +132,6 @@
   gap: 16px;
   justify-content: center;
 }
-
-
 
 .btn-neon-blue:hover {
   transform: translateY(-2px);
@@ -587,29 +583,29 @@
   }
 }
 
-/* ================= INDUSTRIES SECTION (Enhanced & Scaled Down) ================= */
+/* ================= INDUSTRIES SECTION (Enhanced & Scaled Down / Fixed Flex Wrap) ================= */
 .industry-grid-enhanced {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  gap: 16px; /* Tighter gap */
+  gap: 16px;
   width: 100%;
   padding: 0 20px;
 }
 
 .industry-card-enhanced {
-  flex: 1 1 0; 
-  min-width: 240px; /* Reduced min-width */
+  flex: 1 1 calc(33.333% - 16px); 
+  min-width: 240px;
   background: linear-gradient(160deg, #ffffff 0%, #f4f7fb 100%);
   border: 1px solid #e2e8f0;
-  border-radius: 16px; /* Slightly tighter border radius */
-  padding: 24px 20px; /* Reduced padding */
+  border-radius: 16px;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
   text-decoration: none;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02); /* Softer initial shadow */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1;
 }
@@ -617,7 +613,7 @@
 .industry-card-enhanced:hover {
   transform: translateY(-4px);
   border-color: #3b82f6;
-  box-shadow: 0 12px 24px -6px rgba(37, 99, 235, 0.12); /* Sharper, more focused hover shadow */
+  box-shadow: 0 12px 24px -6px rgba(37, 99, 235, 0.12);
 }
 
 .industry-hover-glow {
@@ -638,7 +634,7 @@
 }
 
 .industry-icon-wrapper {
-  width: 48px; /* Reduced icon size */
+  width: 48px;
   height: 48px;
   background: #eff6ff;
   color: #2563eb;
@@ -646,7 +642,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px; /* Tighter margin */
+  margin-bottom: 16px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -664,7 +660,7 @@
 }
 
 .industry-content h3 {
-  font-size: 1.1rem; /* Smaller heading */
+  font-size: 1.1rem;
   font-weight: 800;
   color: #0f172a;
   margin-bottom: 8px;
@@ -672,7 +668,7 @@
 }
 
 .industry-content p {
-  font-size: 0.85rem; /* Smaller text */
+  font-size: 0.85rem;
   color: #475569;
   font-weight: 500;
   line-height: 1.5;
@@ -684,7 +680,7 @@
   align-items: center;
   gap: 6px;
   font-weight: 700;
-  font-size: 0.85rem; /* Scaled down link */
+  font-size: 0.85rem;
   color: #2563eb;
   margin-top: auto;
   padding-top: 12px;
@@ -705,11 +701,21 @@
   transform: translateX(4px);
 }
 
-/* Industry Component Breakpoints */
+/* Industry Component Breakpoints for Responsive Grid View */
+@media (max-width: 1024px) {
+  .industry-card-enhanced {
+    flex: 1 1 calc(50% - 16px);
+  }
+}
+
 @media (max-width: 768px) {
   .industry-grid-enhanced {
     flex-direction: column;
     gap: 16px;
+  }
+  .industry-card-enhanced {
+    flex: 1 1 100%;
+    min-width: 100%;
   }
 }
 
@@ -994,7 +1000,6 @@
 }
 
 @media (max-width: 768px) {
-  /* Increased bottom padding for mobile hero */
   .hero-full-image-section { 
     min-height: 60vh; 
     padding: 100px 0 70px; 
@@ -1052,7 +1057,7 @@
 .hero-full-image-section {
   position: relative;
   background-color: #030712;
-  padding: 130px 0 70px; /* Reduced vertical padding */
+  padding: 130px 0 70px;
   overflow: hidden;
   color: #ffffff;
 }
@@ -1078,11 +1083,10 @@
   z-index: 2;
 }
 
-/* Reduced width container for a sleeker profile */
 .hero-centered-container {
   position: relative;
   z-index: 10;
-  max-width: 1150px !important; /* Reduced width constraint */
+  max-width: 1150px !important;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -1095,7 +1099,6 @@
   margin-bottom: 50px;
 }
 
-/* Left Column Styling */
 .hero-eyebrow-tag {
   display: inline-block;
   font-size: 0.75rem;
@@ -1142,7 +1145,6 @@
   margin-bottom: 36px;
 }
 
-/* Base styles shared by both buttons to force identical size */
 .btn-neon-blue,
 .btn-solid-dark {
   display: inline-flex !important;
@@ -1198,7 +1200,6 @@
   color: #38bdf8;
 }
 
-/* Inline Checkmark Feature Blocks */
 .hero-inline-features {
   display: flex;
   gap: 20px;
@@ -1236,7 +1237,6 @@
   color: #94a3b8;
 }
 
-/* Right Column Holographic Globe & Modules Stage */
 .hero-right-col {
   position: relative;
   height: 380px;
@@ -1268,7 +1268,6 @@
   z-index: 1;
 }
 
-/* Floating Module Cards */
 .holo-module-card {
   position: absolute;
   display: flex;
@@ -1292,17 +1291,14 @@
   border-color: #38bdf8;
 }
 
-/* Left side card positioning */
 .holo-card-left-1 { top: 40px; left: -15px; }
 .holo-card-left-2 { top: 160px; left: -30px; }
 .holo-card-left-3 { top: 280px; left: -15px; }
 
-/* Right side card positioning */
 .holo-card-right-1 { top: 40px; right: -15px; }
 .holo-card-right-2 { top: 130px; right: -30px; }
 .holo-card-right-3 { top: 220px; right: -15px; }
 
-/* Integrated Stats Grid Row */
 .hero-stats-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1353,7 +1349,6 @@
   font-weight: 600;
 }
 
-/* Trusted Enterprises Ticker */
 .hero-enterprise-ticker {
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid #cbd5e1;
