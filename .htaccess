@@ -1,13 +1,16 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-
   RewriteBase /
 
+  # Disable Apache content negotiation so /about isn't misresolved
+  Options -MultiViews
+
+  # Don't rewrite the actual entry file
   RewriteRule ^index\.html$ - [L]
 
+  # Everything that isn't a real file, directory, or symlink → the SPA
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-l
-
   RewriteRule . /index.html [L]
 </IfModule>
