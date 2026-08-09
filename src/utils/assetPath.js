@@ -6,5 +6,6 @@
  */
 export function assetPath(path) {
   const base = import.meta.env.BASE_URL;
-  return `${base}${path.replace(/^\/+/, '')}`;
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+  return `${normalizedBase}${path.replace(/^\/+/, '')}`;
 }

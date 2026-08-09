@@ -72,6 +72,8 @@ export default function Header() {
             src={assetPath('logo.png')}
             alt="DropXcorp"
             className="main-logo"
+            width="276"
+            height="155"
           />
         </Link>
 

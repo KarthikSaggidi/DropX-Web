@@ -49,5 +49,5 @@ generate the correct production asset URLs:
 VITE_BASE_PATH=/dropxcorp/ npm run build
 ```
 
-For direct links such as `/about` to work, configure your host to serve
-`index.html` as the fallback for routes that are not real files.
+Navigation uses hash routes (for example, `/#/about`) so refreshing any page
+works on static hosting without requiring server-side rewrite rules.

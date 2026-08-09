@@ -173,8 +173,8 @@ export default function Home() {
       </section>
 
       {/* ================= WHY DROPXCORP & FEATURES ================= */}
-      <section className="soft-section-white">
-        <div className="container relative z-10">
+      <section className="soft-section-white home-process-section">
+        <div className="container relative z-10 home-section-container">
 
           <div className="soft-header text-center">
             <div className="section-badge-animated-border">WHY CHOOSE DROPXCORP</div>
@@ -259,7 +259,7 @@ export default function Home() {
       </section>
 
       {/* ================= ENHANCED INDUSTRIES SECTION ================= */}
-      <section className="container page-section relative z-10">
+      <section className="container page-section relative z-10 home-industries-section">
         <div className="section-title-centered">
           <div className="soft-header text-center mb-0">
             <div className="section-badge-animated-border">

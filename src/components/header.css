@@ -39,9 +39,12 @@
   flex-shrink: 0;
 }
 
-.main-logo {
+.site-header .main-logo {
   height: 155px; /* Large and prominent, but safely fits inside the 80px header */
   width: auto;
+  max-width: none;
+  max-height: none;
+  flex: none;
   display: block;
   object-fit: contain;
   transition: opacity 0.2s ease;
