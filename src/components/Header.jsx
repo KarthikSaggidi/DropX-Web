@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 
 import { navItems } from '../data/siteData.js';
+import { assetPath } from '../utils/assetPath.js';
 import '../components/header.css';
 
 export default function Header() {
@@ -68,7 +69,7 @@ export default function Header() {
           onClick={handleNavigation}
         >
           <img
-            src="/logo.png"
+            src={assetPath('logo.png')}
             alt="DropXcorp"
             className="main-logo"
           />

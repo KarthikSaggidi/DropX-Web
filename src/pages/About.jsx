@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 
 import CTA from '../components/CTA.jsx';
+import { assetPath } from '../utils/assetPath.js';
 
 import '../pages/about.css';
 
@@ -190,7 +191,7 @@ export default function About() {
             {/* Founder */}
             <div className="leader-minimal-card">
               <div className="leader-img-box">
-                <img src="/images/founder.jpg" alt="Sourab Singh" />
+                <img src={assetPath('images/founder.jpg')} alt="Sourab Singh" />
                 <div className="leader-social-overlay">
                   <span>CTO</span>
                 </div>
@@ -212,7 +213,7 @@ export default function About() {
             {/* Co-Founder */}
             <div className="leader-minimal-card">
               <div className="leader-img-box">
-                <img src="/images/co-founder.jpg" alt="Saggidi Karthik" />
+                <img src={assetPath('images/co-founder.jpg')} alt="Saggidi Karthik" />
                 <div className="leader-social-overlay">
                   <span>CEO</span>
                 </div>
@@ -258,7 +259,7 @@ export default function About() {
             
             <div className="portfolio-compact-card">
               <div className="portfolio-img-box">
-                <img src="/images/projects/hospital-erp.jpg" alt="Hospital ERP" />
+                <img src={assetPath('images/projects/hospital-erp.jpg')} alt="Hospital ERP" />
               </div>
               <div className="portfolio-content">
                 <span className="portfolio-tag">Healthcare</span>
@@ -271,7 +272,7 @@ export default function About() {
 
             <div className="portfolio-compact-card">
               <div className="portfolio-img-box">
-                <img src="/images/projects/society.jpg" alt="Society App" />
+                <img src={assetPath('images/projects/society.jpg')} alt="Society App" />
               </div>
               <div className="portfolio-content">
                 <span className="portfolio-tag">Real Estate</span>
@@ -284,7 +285,7 @@ export default function About() {
 
             <div className="portfolio-compact-card">
               <div className="portfolio-img-box">
-                <img src="/images/projects/salon.jpg" alt="Salon POS" />
+                <img src={assetPath('images/projects/salon.jpg')} alt="Salon POS" />
               </div>
               <div className="portfolio-content">
                 <span className="portfolio-tag">Retail</span>
@@ -297,7 +298,7 @@ export default function About() {
 
             <div className="portfolio-compact-card">
               <div className="portfolio-img-box">
-                <img src="/images/projects/website.jpg" alt="Web Apps" />
+                <img src={assetPath('images/projects/website.jpg')} alt="Web Apps" />
               </div>
               <div className="portfolio-content">
                 <span className="portfolio-tag">Corporate</span>
@@ -316,19 +317,19 @@ export default function About() {
       <section className="marquee-section border-t border-b border-gray-100 bg-white">
         <div className="marquee-container">
           <div className="marquee-track">
-            <img src="/images/clients/client-1.png" alt="Client" />
-            <img src="/images/clients/client-2.png" alt="Client" />
-            <img src="/images/clients/client-3.png" alt="Client" />
-            <img src="/images/clients/client-4.png" alt="Client" />
-            <img src="/images/clients/client-5.png" alt="Client" />
-            <img src="/images/clients/client-6.png" alt="Client" />
+            <img src={assetPath('images/clients/client-1.png')} alt="Client" />
+            <img src={assetPath('images/clients/client-2.png')} alt="Client" />
+            <img src={assetPath('images/clients/client-3.png')} alt="Client" />
+            <img src={assetPath('images/clients/client-4.png')} alt="Client" />
+            <img src={assetPath('images/clients/client-5.png')} alt="Client" />
+            <img src={assetPath('images/clients/client-6.png')} alt="Client" />
             {/* Duplicates for infinite loop */}
-            <img src="/images/clients/client-1.png" alt="Client" />
-            <img src="/images/clients/client-2.png" alt="Client" />
-            <img src="/images/clients/client-3.png" alt="Client" />
-            <img src="/images/clients/client-4.png" alt="Client" />
-            <img src="/images/clients/client-5.png" alt="Client" />
-            <img src="/images/clients/client-6.png" alt="Client" />
+            <img src={assetPath('images/clients/client-1.png')} alt="Client" />
+            <img src={assetPath('images/clients/client-2.png')} alt="Client" />
+            <img src={assetPath('images/clients/client-3.png')} alt="Client" />
+            <img src={assetPath('images/clients/client-4.png')} alt="Client" />
+            <img src={assetPath('images/clients/client-5.png')} alt="Client" />
+            <img src={assetPath('images/clients/client-6.png')} alt="Client" />
           </div>
         </div>
       </section>

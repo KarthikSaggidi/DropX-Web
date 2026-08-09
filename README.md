@@ -40,3 +40,14 @@ npm run build
 ```
 
 Upload the generated `dist` folder to your hosting/server.
+
+If the website is deployed inside a subdirectory (for example,
+`https://example.com/dropxcorp/`), build it with the same path so Vite can
+generate the correct production asset URLs:
+
+```bash
+VITE_BASE_PATH=/dropxcorp/ npm run build
+```
+
+For direct links such as `/about` to work, configure your host to serve
+`index.html` as the fallback for routes that are not real files.

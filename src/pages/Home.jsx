@@ -24,6 +24,7 @@ import {
 
 import SectionHeader from '../components/SectionHeader.jsx';
 import CTA from '../components/CTA.jsx';
+import { assetPath } from '../utils/assetPath.js';
 
 import '../pages/home.css';
 
@@ -47,7 +48,7 @@ export default function Home() {
       <section className="hero-full-image-section">
         <div className="hero-bg-image-wrapper">
           <img
-            src="/hero.jpeg"
+            src={assetPath('hero.jpeg')}
             alt="DropXcorp futuristic digital city background"
           />
           
