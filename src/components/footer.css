@@ -46,7 +46,7 @@
 
 /* Updated intrinsic height control matching header optimization to prevent deployment scaling issues */
 .footer-logo-link img {
-  height: 130px;
+  height: 45px;
   width: auto;
   display: block;
   object-fit: contain;

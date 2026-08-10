@@ -40,7 +40,7 @@
 }
 
 .site-header .main-logo {
-  height: 155px; /* Large and prominent, but safely fits inside the 80px header */
+  height: 50px; /* Large and prominent, but safely fits inside the 80px header */
   width: auto;
   max-width: none;
   max-height: none;

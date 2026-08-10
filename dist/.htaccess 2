@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Prevent Apache content-negotiation from mis-resolving requests
+  Options -MultiViews
+
+  # Don't rewrite nonexistent-but-slash-looking fingerprint paths unnecessarily
+  RewriteRule ^index\.html$ - [L]
+
+  # Serve existing files/dirs/links directly; rewrite everything else to the SPA
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Make sure .htaccess / hidden files are never exposed
+<FilesMatch "^\.ht">
+  Require all denied
+</FilesMatch>
+
+# Optional: standard SPA asset caching (1 year for fingerprinted hashed files)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/* "access plus 1 year"
+</IfModule>
