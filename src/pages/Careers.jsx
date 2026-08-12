@@ -21,53 +21,214 @@ import {
   HeartHandshake,
   Loader2,
   Sparkles,
-  Building
+  Building,
+  Inbox
 } from 'lucide-react';
 
-import { jobs } from '../data/siteData.js';
 import CTA from '../components/CTA.jsx';
-
 import '../pages/careers.css';
 
-// Expand jobs for demo purposes
-const extendedJobs = [...jobs, ...jobs, ...jobs];
+// ==========================================
+// 🛠️ CONTROL PANEL: Change this single line to 
+// true (to open all jobs) or false (to close all jobs)
+// ==========================================
+const ALL_JOBS_OPEN = false;
 
-const enrichedJobs = extendedJobs.map((job, index) => ({
+
+// 6 distinct startup job roles (₹4L - ₹6L salary range)
+const rawJobsData = [
+  {
+    id: 1,
+    role: 'Frontend Developer (React)',
+    type: 'Full-Time',
+    text: 'Build snappy, responsive, and intuitive user interfaces for our core SaaS applications.',
+    spots: 1,
+    location: 'Hyderabad / Remote',
+    salary: '₹4L - ₹6L',
+    team: 'Engineering',
+    techStack: ['React', 'TailwindCSS', 'JavaScript', 'REST APIs'],
+    about: 'As a Frontend Developer at DropXcorp, you would craft seamless web experiences and high-performance client applications.',
+    responsibilities: [
+      'Translate UI/UX wireframes into clean, production-ready React components.',
+      'Optimize web applications for maximum speed and scalability.',
+      'Collaborate with backend teams to integrate seamless data flows.'
+    ],
+    requirements: [
+      'Proven experience building modern web apps with React.js.',
+      'Strong grasp of CSS architecture, responsive design, and state management.',
+      'Degree in Computer Science or equivalent practical experience.'
+    ],
+    whoYouAre: [
+      'Detail-oriented builder with an eye for clean code and fluid interfaces.',
+      'Excited to work in a fast-paced, lean startup environment.'
+    ],
+    perks: [
+      'Flexible Work Culture',
+      'Learning & Upskilling Stipend',
+      'Health Insurance Support'
+    ]
+  },
+  {
+    id: 2,
+    role: 'Backend Developer (Node.js)',
+    type: 'Full-Time',
+    text: 'Design robust server-side architecture, secure APIs, and efficient database models.',
+    spots: 1,
+    location: 'Hyderabad / Remote',
+    salary: '₹4L - ₹6L',
+    team: 'Engineering',
+    techStack: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL'],
+    about: 'In this role, you would own backend services, data pipelines, and server reliability across our digital products.',
+    responsibilities: [
+      'Develop scalable RESTful APIs and microservices.',
+      'Manage database schemas, queries, and server-side performance optimization.',
+      'Ensure high standards of code quality and security protocols.'
+    ],
+    requirements: [
+      'Solid foundational knowledge of Node.js and backend frameworks.',
+      'Experience with SQL/NoSQL databases and cloud deployments.',
+      'Strong problem-solving and algorithmic thinking abilities.'
+    ],
+    whoYouAre: [
+      'Passionate about backend performance, clean architecture, and API design.',
+      'Proactive learner who takes full accountability of systems.'
+    ],
+    perks: [
+      'Remote-friendly options',
+      'Flexible working hours',
+      'Direct mentorship from senior engineers'
+    ]
+  },
+  {
+    id: 3,
+    role: 'UI/UX Designer',
+    type: 'Full-Time',
+    text: 'Craft user journeys, wireframes, and design systems for web and mobile products.',
+    spots: 1,
+    location: 'Hyderabad / Hybrid',
+    salary: '₹4L - ₹6L',
+    team: 'Design',
+    techStack: ['Figma', 'Prototyping', 'Design Systems', 'User Research'],
+    about: 'You would shape the look and feel of DropXcorp digital solutions, bridging user needs with clean visual design.',
+    responsibilities: [
+      'Create wireframes, mockups, and high-fidelity prototypes in Figma.',
+      'Build and maintain scalable design systems.',
+      'Conduct user testing sessions to continuously improve usability.'
+    ],
+    requirements: [
+      'Strong portfolio demonstrating UI/UX fundamentals and problem-solving.',
+      'Proficiency in Figma and modern collaborative design tools.',
+      'Strong communication skills to explain design rationale.'
+    ],
+    whoYouAre: [
+      'Empathetic designer obsessed with user experience and visual harmony.',
+      'Open to feedback and collaborative iteration.'
+    ],
+    perks: [
+      'Design tool subscriptions covered',
+      'Flexible lifestyle schedule',
+      'Creative freedom'
+    ]
+  },
+  {
+    id: 4,
+    role: 'QA & Automation Engineer',
+    type: 'Full-Time',
+    text: 'Ensure rigorous product quality through automated test scripts and systematic bug tracking.',
+    spots: 1,
+    location: 'Hyderabad / Remote',
+    salary: '₹4L - ₹6L',
+    team: 'Engineering',
+    techStack: ['Selenium', 'Cypress', 'Jest', 'Postman'],
+    about: 'You would be the gatekeeper of product quality, building automated testing frameworks to safeguard releases.',
+    responsibilities: [
+      'Design and execute comprehensive test cases and automation scripts.',
+      'Identify, document, and track software defects thoroughly.',
+      'Work closely with developers to resolve issues before production deployment.'
+    ],
+    requirements: [
+      'Practical experience in manual and automated software testing.',
+      'Familiarity with JavaScript testing frameworks or API testing tools.',
+      'Strong analytical mindset and eye for edge cases.'
+    ],
+    whoYouAre: [
+      'Meticulous and methodical about application reliability and bug prevention.',
+      'Driven to improve engineering workflows.'
+    ],
+    perks: [
+      'Comprehensive health coverage',
+      'Skill development budget',
+      'Supportive team environment'
+    ]
+  },
+  {
+    id: 5,
+    role: 'Digital Marketing & Growth Specialist',
+    type: 'Full-Time',
+    text: 'Drive acquisition campaigns, SEO strategies, and performance marketing initiatives.',
+    spots: 1,
+    location: 'Hyderabad / Hybrid',
+    salary: '₹4L - ₹6L',
+    team: 'Operations',
+    techStack: ['Google Ads', 'SEO', 'Analytics', 'Content Strategy'],
+    about: 'You would spearhead digital outreach, scaling our brand visibility and user acquisition channels.',
+    responsibilities: [
+      'Plan and execute digital campaigns across search, social, and email channels.',
+      'Analyze traffic metrics and conversion funnels to optimize ROI.',
+      'Collaborate on content marketing and brand positioning.'
+    ],
+    requirements: [
+      'Hands-on experience with digital marketing campaigns and growth tools.',
+      'Strong analytical skills to interpret data and KPIs.',
+      'Excellent written and verbal communication skills.'
+    ],
+    whoYouAre: [
+      'Creative, data-driven, and experimental growth enthusiast.',
+      'Comfortable adapting quickly to market trends.'
+    ],
+    perks: [
+      'Performance-based incentives',
+      'Flexible hybrid schedule',
+      'Continuous learning culture'
+    ]
+  },
+  {
+    id: 6,
+    role: 'Technical Operations Associate',
+    type: 'Full-Time',
+    text: 'Streamline internal processes, client documentation, and technical project tracking.',
+    spots: 1,
+    location: 'Hyderabad / Remote',
+    salary: '₹4L - ₹6L',
+    team: 'Operations',
+    techStack: ['Jira', 'Notion', 'Documentation', 'Client Comms'],
+    about: 'You would keep our projects running smoothly by coordinating workflows, schedules, and technical documentation.',
+    responsibilities: [
+      'Manage project timelines, sprint backlogs, and task distribution in Jira.',
+      'Maintain clear technical documentation and internal knowledge bases.',
+      'Facilitate smooth communication between clients and development teams.'
+    ],
+    requirements: [
+      'Strong organizational skills and familiarity with agile project tools.',
+      'Exceptional written and verbal communication abilities.',
+      'Basic technical literacy to understand software delivery pipelines.'
+    ],
+    whoYouAre: [
+      'Extremely organized, dependable, and proactive problem solver.',
+      'Thrives in structured coordination roles.'
+    ],
+    perks: [
+      'Remote flexibility',
+      'Health benefits package',
+      'Direct exposure to startup operations'
+    ]
+  }
+];
+
+// Automatically inject the global open/closed status into every job item
+const jobsData = rawJobsData.map(job => ({
   ...job,
-  id: index + 1,
-  spots: [2, 1, 3, 5, 2, 1][index % 6], 
-  location: 'Hyderabad / Remote',
-  salary: ['₹12L - ₹18L', '₹8L - ₹14L', '₹15L - ₹24L'][index % 3],
-  team: ['Engineering', 'Design', 'Operations'][index % 3],
-  techStack: [
-    ['React', 'Node.js', 'AWS', 'MongoDB'],
-    ['Figma', 'UI/UX', 'Prototyping', 'Webflow'],
-    ['Jira', 'Agile', 'Client Comms', 'Documentation']
-  ][index % 3],
-  about: `As a ${job.role} at DropXcorp, you will play a pivotal role in shaping our core digital products. You will work alongside a team of exceptionally talented individuals to build solutions that impact thousands of users globally. We are looking for someone who is passionate, driven, and ready to take ownership of complex challenges.`,
-  responsibilities: [
-    'Design, develop, and maintain high-performance, scalable digital solutions.',
-    'Collaborate closely with cross-functional teams to define and launch new features.',
-    'Identify and correct bottlenecks, fix bugs, and continuously optimize application performance.',
-    'Maintain code quality, architectural organization, and automated testing pipelines.'
-  ],
-  requirements: [
-    'Proven professional experience in the relevant technology stack.',
-    'Strong analytical, problem-solving skills, and a high attention to detail.',
-    'Excellent communication and teamwork abilities; you thrive in a collaborative environment.',
-    'Degree in Computer Science, Design, Engineering, or equivalent practical experience.'
-  ],
-  whoYouAre: [
-    'You thrive in a fast-paced, agile, and dynamic startup environment.',
-    'You have a strong bias for action and take immense pride in your ownership of a project.',
-    'You are a continuous learner who loves exploring new technologies and industry trends.'
-  ],
-  perks: [
-    'Comprehensive Health & Dental Coverage',
-    'Flexible & Remote-First Work Options',
-    'Generous Annual Learning Budget',
-    'Latest MacBook Pro & Home Office Stipend'
-  ]
+  isOpen: ALL_JOBS_OPEN
 }));
 
 export default function Careers() {
@@ -97,6 +258,7 @@ export default function Careers() {
   const [phoneError, setPhoneError] = useState('');
 
   const openJobDetails = (job, directToForm = false) => {
+    if (!job.isOpen) return;
     setSelectedJob(job);
     setIsApplying(directToForm); 
     setSubmitSuccess(false);
@@ -201,6 +363,8 @@ export default function Careers() {
     }
   };
 
+  const openJobsCount = jobsData.filter(job => job.isOpen).length;
+
   return (
     <div className="careers-page-wrapper">
       
@@ -220,7 +384,7 @@ export default function Careers() {
               </h1>
               <div className="max-w-700 mx-auto text-muted mt-6">
                 <p className="text-lg">
-                  Join a collective of ambitious engineers, designers, and strategists. We’re building modern SaaS platforms, enterprise systems, and intelligent digital experiences.
+                  Join an agile collective of ambitious builders. We’re crafting modern SaaS platforms and intelligent digital experiences.
                 </p>
               </div>
               <div className="c-hero-actions mt-8">
@@ -251,31 +415,49 @@ export default function Careers() {
               </h2>
               <div className="max-w-700 mx-auto text-muted mt-4">
                 <p className="mb-3">
-                  We currently have <strong>{enrichedJobs.length}</strong> open positions. Explore exciting opportunities and work on innovative digital products.
+                  We currently have <strong>{openJobsCount}</strong> active {openJobsCount === 1 ? 'position' : 'positions'} open. Explore our listings below.
                 </p>
               </div>
             </div>
           </div>
 
           <div className="c-jobs-container mt-12">
+            {openJobsCount === 0 ? (
+              <div className="c-empty-state text-center py-16">
+                <div className="c-empty-icon-box mx-auto mb-4">
+                  <Inbox size={40} className="text-muted" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">No Open Roles Right Now</h3>
+                <p className="text-muted max-w-md mx-auto mb-6">
+                  All current positions are filled, but we are always excited to hear from talented individuals. Feel free to check back later or drop your resume at <strong>careers@dropxcorp.com</strong>.
+                </p>
+              </div>
+            ) : null}
+
             <div className="c-jobs-grid">
-              {enrichedJobs.map((job) => (
+              {jobsData.map((job) => (
                 <div 
-                  className="c-job-card hover-lift cursor-pointer" 
+                  className={`c-job-card ${job.isOpen ? 'hover-lift cursor-pointer' : 'c-job-closed'}`} 
                   key={job.id} 
-                  onClick={() => openJobDetails(job)} 
+                  onClick={() => job.isOpen && openJobDetails(job)} 
                 >
                   <div className="c-job-card-header">
                     <div className="c-job-icon">
                       <BriefcaseBusiness size={24} />
                     </div>
                     <div className="c-job-tags-top">
-                      {job.spots <= 2 && (
-                        <span className="c-spots-badge">
-                          <Flame size={14} /> {job.spots} spots left
-                        </span>
+                      {job.isOpen ? (
+                        <>
+                          {job.spots <= 2 && (
+                            <span className="c-spots-badge">
+                              <Flame size={14} /> {job.spots} {job.spots === 1 ? 'spot' : 'spots'} left
+                            </span>
+                          )}
+                          <span className="c-job-type">{job.type}</span>
+                        </>
+                      ) : (
+                        <span className="c-closed-badge">Applications Closed</span>
                       )}
-                      <span className="c-job-type">{job.type}</span>
                     </div>
                   </div>
 
@@ -292,19 +474,23 @@ export default function Careers() {
                       </div>
                       <div className="c-meta-item">
                         <Clock3 size={15} className="text-primary" />
-                        <span>Full Time</span>
+                        <span>{job.type}</span>
                       </div>
                     </div>
 
-                    <button 
-                      className="c-btn-apply"
-                      onClick={(e) => {
-                        e.stopPropagation(); 
-                        openJobDetails(job, true); 
-                      }}
-                    >
-                      Apply Now <ArrowRight size={16} />
-                    </button>
+                    {job.isOpen ? (
+                      <button 
+                        className="c-btn-apply"
+                        onClick={(e) => {
+                          e.stopPropagation(); 
+                          openJobDetails(job, true); 
+                        }}
+                      >
+                        Apply Now <ArrowRight size={16} />
+                      </button>
+                    ) : (
+                      <span className="c-text-closed text-muted font-medium text-sm">Filled</span>
+                    )}
                   </div>
                 </div>
               ))}
@@ -328,7 +514,7 @@ export default function Careers() {
               </h2>
               <div className="max-w-700 mx-auto text-muted mt-4">
                 <p className="mb-3">
-                  We focus on innovation, personal growth, and creating an inspiring workplace where top talent can thrive.
+                  We focus on high impact, rapid personal growth, and creating a supportive workplace where top talent flourishes.
                 </p>
               </div>
             </div>
@@ -342,18 +528,18 @@ export default function Careers() {
             </div>
             <div className="c-benefit-card hover-lift">
               <div className="c-benefit-icon"><TrendingUp size={28} /></div>
-              <h3>Learning & Growth</h3>
-              <p>Access to continuous mentorship, training budgets, and exposure to cutting-edge technologies.</p>
+              <h3>Early Growth</h3>
+              <p>Direct impact on product direction with competitive compensation and learning pathways.</p>
             </div>
             <div className="c-benefit-card hover-lift">
               <div className="c-benefit-icon"><Rocket size={28} /></div>
               <h3>Innovative Projects</h3>
-              <p>Work on complex SaaS platforms, AI tools, enterprise ERP systems, and highly scalable products.</p>
+              <p>Build modern SaaS platforms, automation tools, and highly scalable digital systems.</p>
             </div>
             <div className="c-benefit-card hover-lift">
               <div className="c-benefit-icon"><Users size={28} /></div>
-              <h3>Team Culture</h3>
-              <p>Collaborate with a passionate, highly creative, and supportive development team every single day.</p>
+              <h3>Lean Team</h3>
+              <p>Work directly with founders and senior leaders with zero bureaucracy and fast execution.</p>
             </div>
           </div>
         </div>
@@ -457,7 +643,7 @@ export default function Careers() {
                           </div>
                           <div className="c-sidebar-fact">
                             <div className="fact-icon bg-emerald-light"><Wallet size={18} className="text-emerald"/></div>
-                            <div className="fact-text"><small>Salary Range</small><strong>{selectedJob.salary}</strong></div>
+                            <div className="fact-text"><small>Compensation</small><strong>{selectedJob.salary}</strong></div>
                           </div>
                           <div className="c-sidebar-fact">
                             <div className="fact-icon bg-amber-light"><Users size={18} className="text-amber"/></div>
@@ -465,7 +651,7 @@ export default function Careers() {
                           </div>
                           <div className="c-sidebar-fact">
                             <div className="fact-icon bg-rose-light"><Clock3 size={18} className="text-rose"/></div>
-                            <div className="fact-text"><small>Employment</small><strong>Full-Time</strong></div>
+                            <div className="fact-text"><small>Employment</small><strong>{selectedJob.type}</strong></div>
                           </div>
                         </div>
 
@@ -516,7 +702,7 @@ export default function Careers() {
                       <ArrowLeft size={16} /> Back to details
                     </button>
                     <h2 className="c-modal-hero-title mt-4">Apply for {selectedJob.role}</h2>
-                    <p className="c-modal-hero-subtitle">Complete the form below. Your application will be sent directly to our hiring managers.</p>
+                    <p className="c-modal-hero-subtitle">Complete the form below. Your application will go directly to our hiring team.</p>
                   </div>
                 </div>
 
@@ -579,8 +765,8 @@ export default function Careers() {
                         </div>
 
                         <div className="c-form-group">
-                          <label>Expected CTC <span className="text-red-500">*</span></label>
-                          <input type="text" name="expectedCTC" required value={formData.expectedCTC} onChange={handleInputChange} placeholder="E.g. 15 LPA" className="c-input" disabled={isSubmitting} />
+                          <label>Expected Compensation <span className="text-red-500">*</span></label>
+                          <input type="text" name="expectedCTC" required value={formData.expectedCTC} onChange={handleInputChange} placeholder="E.g. 5 LPA" className="c-input" disabled={isSubmitting} />
                         </div>
 
                         <div className="c-form-group col-span-full">
@@ -599,11 +785,11 @@ export default function Careers() {
                           <>
                             <div className="c-form-group fade-in-fast">
                               <label>Current Position <span className="text-red-500">*</span></label>
-                              <input type="text" name="currentPosition" required value={formData.currentPosition} onChange={handleInputChange} placeholder="E.g. Senior Frontend Dev" className="c-input" disabled={isSubmitting} />
+                              <input type="text" name="currentPosition" required value={formData.currentPosition} onChange={handleInputChange} placeholder="E.g. Junior Developer" className="c-input" disabled={isSubmitting} />
                             </div>
                             <div className="c-form-group fade-in-fast">
-                              <label>Current CTC <span className="text-red-500">*</span></label>
-                              <input type="text" name="currentCTC" required value={formData.currentCTC} onChange={handleInputChange} placeholder="E.g. 10 LPA" className="c-input" disabled={isSubmitting} />
+                              <label>Current Compensation <span className="text-red-500">*</span></label>
+                              <input type="text" name="currentCTC" required value={formData.currentCTC} onChange={handleInputChange} placeholder="E.g. 4 LPA" className="c-input" disabled={isSubmitting} />
                             </div>
                           </>
                         )}
@@ -670,7 +856,7 @@ export default function Careers() {
                 </div>
                 <h2 className="c-success-title mt-6 text-3xl font-bold">Application Submitted!</h2>
                 <p className="c-success-desc mt-4 text-muted max-w-lg mx-auto">
-                  Thank you for applying to the <strong>{selectedJob.role}</strong> position. Our talent acquisition team will review your profile and contact you shortly.
+                  Thank you for applying to the <strong>{selectedJob.role}</strong> position. Our team will review your profile and contact you shortly.
                 </p>
                 <button className="btn btn-primary btn-lg mt-8 shadow-glow" onClick={closeModal}>
                   Return to Careers
