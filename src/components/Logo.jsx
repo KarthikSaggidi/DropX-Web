@@ -1,3 +1,6 @@
+import React from 'react';
+import { assetPath } from '../utils/assetPath.js';
+
 export default function Logo({
   dark = false,
   className = "",
@@ -10,7 +13,7 @@ export default function Logo({
       } ${className}`}
     >
       <img
-        src={assetPath(dark ? 'footer-logo.png' : 'logo.png')}
+        src={assetPath(dark ? 'footer-logo.png?v=2' : 'logo.png?v=2')}
         alt="DropXcorp Pvt. Ltd."
         className="main-logo"
         width={width}
@@ -18,4 +21,4 @@ export default function Logo({
     </div>
   );
 }
-import { assetPath } from '../utils/assetPath.js';
+

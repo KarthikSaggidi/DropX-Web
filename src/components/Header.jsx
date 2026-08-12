@@ -9,6 +9,7 @@ import {
 
 import { navItems } from '../data/siteData.js';
 import { assetPath } from '../utils/assetPath.js';
+import Logo from './Logo.jsx';
 import '../components/header.css';
 
 export default function Header() {
@@ -68,13 +69,7 @@ export default function Header() {
           className="brand"
           onClick={handleNavigation}
         >
-          <img
-            src={assetPath('logo.png')}
-            alt="DropXcorp"
-            className="main-logo"
-            width="276"
-            height="155"
-          />
+          <Logo width={276} />
         </Link>
 
         {/* MOBILE MENU BUTTON */}
