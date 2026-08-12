@@ -63,11 +63,45 @@
   gap: 1rem;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 34rem;
+  margin-inline: auto;
+}
+
+/* Scope action controls to Careers so page CSS loaded elsewhere cannot alter
+   their size, alignment, or icon position in the production bundle. */
+.careers-page-wrapper .c-hero-actions .btn,
+.careers-page-wrapper .c-form-footer .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3.5rem;
+  line-height: 1.2;
+  box-sizing: border-box;
+}
+
+.careers-page-wrapper .c-hero-actions .btn {
+  width: 100%;
+}
+
+.careers-page-wrapper .c-form-footer .btn {
+  width: 100%;
+}
+
+.careers-page-wrapper .c-form-footer .btn svg,
+.careers-page-wrapper .c-hero-actions .btn svg {
+  flex: 0 0 auto;
 }
 
 @media (min-width: 640px) {
   .c-hero-actions {
     flex-direction: row;
+  }
+
+  .careers-page-wrapper .c-hero-actions .btn {
+    flex: 1 1 0;
+    width: auto;
   }
 }
 
@@ -795,6 +829,8 @@
   color: var(--text-muted, #64748b);
   cursor: pointer;
   transition: all 0.2s ease;
+  min-height: 2.75rem;
+  line-height: 1.2;
 }
 
 .c-segment-btn.active {

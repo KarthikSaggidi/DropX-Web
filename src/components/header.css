@@ -40,7 +40,9 @@
 }
 
 .site-header .main-logo {
-  height: 50px; /* Large and prominent, but safely fits inside the 80px header */
+  /* The source artwork includes transparent padding, so the rendered image
+     must remain 155px tall for the visible mark to match the local layout. */
+  height: 155px;
   width: auto;
   max-width: none;
   max-height: none;
@@ -48,6 +50,12 @@
   display: block;
   object-fit: contain;
   transition: opacity 0.2s ease;
+}
+
+@media (max-width: 640px) {
+  .site-header .main-logo {
+    height: 155px;
+  }
 }
 
 /* Mobile Toggle Button */
