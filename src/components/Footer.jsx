@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 
 import Logo from './Logo.jsx';
+import { LinkedinIcon } from './Icons.jsx';
 import { services, industries, company } from '../data/siteData.js';
 
 import '../components/footer.css';
@@ -124,6 +125,16 @@ export default function Footer() {
           >
             <Phone size={16} />
             <span>{company.phone}</span>
+          </a>
+
+          <a
+            href={company.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-contact footer-linkedin-link"
+          >
+            <LinkedinIcon size={16} />
+            <span>DropXcorp LinkedIn</span>
           </a>
 
         </div>

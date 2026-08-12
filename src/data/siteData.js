@@ -39,6 +39,7 @@ export const company = {
   tagline: 'INNOVATE • BUILD • DELIVER',
   email: 'dropxcorp2026@gmail.com',
   phone: '+91 7997005050',
+  linkedin: 'https://www.linkedin.com/company/dropxcorp/',
   address: 'India • Remote-first technology studio',
   heroBadge: 'TECHNOLOGY THAT DELIVERS',
   heroTitleLine1: 'We Build',

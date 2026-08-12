@@ -9,10 +9,12 @@ import {
   Cloud, 
   ShieldCheck, 
   Cpu,
-  CheckCircle2
+  CheckCircle2,
+  Mail
 } from 'lucide-react';
 
 import CTA from '../components/CTA.jsx';
+import { LinkedinIcon } from '../components/Icons.jsx';
 import { assetPath } from '../utils/assetPath.js';
 
 import '../pages/about.css';
@@ -199,6 +201,28 @@ export default function About() {
               <div className="leader-text">
                 <h3>Sourab Singh</h3>
                 <p className="leader-title">Founder & Chief Technology Officer</p>
+
+                <div className="leader-contact-bar">
+                  <a 
+                    href="https://www.linkedin.com/in/sourab-singh-454109235/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="leader-social-btn leader-linkedin"
+                    title="LinkedIn Profile"
+                  >
+                    <LinkedinIcon size={18} />
+                    <span>LinkedIn</span>
+                  </a>
+                  <a 
+                    href="mailto:Sourav@dropxcorp.in" 
+                    className="leader-social-btn leader-email"
+                    title="Send Email"
+                  >
+                    <Mail size={18} />
+                    <span>Sourav@dropxcorp.in</span>
+                  </a>
+                </div>
+
                 <p className="leader-bio">
                   Architecting the future. Sourab leads our engineering teams with an uncompromising focus on scalable systems, code quality, and cutting-edge tech integration. With a profound background in full-stack development and cloud computing, he ensures every product is built to enterprise standards.
                 </p>
@@ -221,6 +245,28 @@ export default function About() {
               <div className="leader-text">
                 <h3>Saggidi Karthik</h3>
                 <p className="leader-title">Co-Founder & Chief Executive Officer</p>
+
+                <div className="leader-contact-bar">
+                  <a 
+                    href="https://www.linkedin.com/in/karthik-saggidi-142aa8349/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="leader-social-btn leader-linkedin"
+                    title="LinkedIn Profile"
+                  >
+                    <LinkedinIcon size={18} />
+                    <span>LinkedIn</span>
+                  </a>
+                  <a 
+                    href="mailto:Karthik@dropxcorp.in" 
+                    className="leader-social-btn leader-email"
+                    title="Send Email"
+                  >
+                    <Mail size={18} />
+                    <span>Karthik@dropxcorp.in</span>
+                  </a>
+                </div>
+
                 <p className="leader-bio">
                   Driving global growth. Karthik spearheads strategic partnerships, client relations, and business operations. He is dedicated to ensuring that our technology solutions align perfectly with our clients' long-term business goals, maximizing ROI and market impact.
                 </p>
