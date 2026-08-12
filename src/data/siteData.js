@@ -37,7 +37,7 @@ import {
 export const company = {
   name: 'DropXcorp Pvt. Ltd.',
   tagline: 'INNOVATE • BUILD • DELIVER',
-  email: 'hello@dropxcorp.com',
+  email: 'dropxcorp2026@gmail.com',
   phone: '+91 7997005050',
   address: 'India • Remote-first technology studio',
   heroBadge: 'TECHNOLOGY THAT DELIVERS',
